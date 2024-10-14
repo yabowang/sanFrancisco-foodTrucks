@@ -1,4 +1,4 @@
-FROM maven:3.8-jdk-17-alpine AS build
+FROM maven:3.8.4-openjdk-17-alpine AS build
 ENV MY_HOME=/app
 
 RUN mkdir -p $MY_HOME
