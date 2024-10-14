@@ -1,4 +1,4 @@
-FROM maven:3.8.4-openjdk-17-alpine AS build
+FROM maven:3.8.4-openjdk-17 AS build
 ENV MY_HOME=/app
 
 RUN mkdir -p $MY_HOME
@@ -11,7 +11,7 @@ RUN sed -i 's#http://my.repository.com/repo/path#https://nexus.zyosoft.cn/reposi
 COPY . $MY_HOME
 RUN mvn clean package -Dmaven.test.skip=true
 
-FROM openjdk:17-alpine
+FROM openjdk:17
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
 RUN apk --no-cache update && apk --no-cache add curl ttf-dejavu fontconfig net-tools busybox-extras && apk --no-cache upgrade
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
