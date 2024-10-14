@@ -1,0 +1,16 @@
+server:
+  port: 80
+  servlet:
+    context-path: /
+  tomcat:
+    connection-timeout: 10000ms
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  application:
+    name: @artifactId@
+
+food:
+  host: https://data.sfgov.org/resource/jjew-r69b.json
